@@ -1,55 +1,47 @@
 #include <stdio.h>
 
 /**
- * main - the 98 first fibonaccis
+ * main - fibonacci <3
  *
- * numbers fibo = fiboB|fiboA f1 = f1b|f1a f2 = f2b|f2a
+ * Purpose - no hardcode
  *
- * Return: 0 success
+ * Return:  (Success)
  */
 
 int main(void)
 {
-	long int fiboA, fiboB, f1, f2, n, f1a, f1b, f2a, f2b, carry;
+	unsigned long int i;
+	unsigned long int bef = 1;
+	unsigned long int aft = 2;
+	unsigned long int l = 1000000000;
+	unsigned long int bef1;
+	unsigned long int bef2;
+	unsigned long int aft1;
+	unsigned long int aft2;
 
-	f1 = 2;
-	f1a = f1 % 1000000000;
-	f1b = f1 / 1000000000;
-	f2 = 1;
-	f2a = f2 % 1000000000;
-	f2b = f2 / 1000000000;
-	printf("%ld, %ld, ", f2, f1);
-	for (n = 3; n <= 98; n++)
+	printf("%lu", bef);
+
+	for (i = 1; i < 91; i++)
 	{
-		fiboA = (f1a + f2a) % 1000000000;
-		carry = (f1a + f2a) / 1000000000;
-                fiboB = f1b + f2b + carry;
-		f2a = f1a;
-		f2b = f1b;
-        	f1a = fiboA;
-		f1b = fiboB;
-		if (n > 58)
-		{
-			if (n < 98)
-			{
-				printf("%ld%09ld, ", fiboB, fiboA);
-			}
-			else
-			{
-				printf("%ld%09ld\n", fiboB, fiboA);
-			}
-		}
-		else
-		{
-			if (fiboB == 0)
-			{
-				printf("%ld, ", fiboA);
-			}
-			else
-			{
-				printf("%ld%ld, ", fiboB, fiboA);
-			}
-		}
+		printf(", %lu", aft);
+		aft += bef;
+		bef = aft - bef;
 	}
+
+	bef1 = (bef / l);
+	bef2 = (bef % l);
+	aft1 = (aft / l);
+	aft2 = (aft % l);
+
+	for (i = 92; i < 99; ++i)
+	{
+		printf(", %lu", aft1 + (aft2 / l));
+		printf("%lu", aft2 % l);
+		aft1 = aft1 + bef1;
+		bef1 = aft1 - bef1;
+		aft2 = aft2 + bef2;
+		bef2 = aft2 - bef2;
+	}
+	printf("\n");
 	return (0);
 }
