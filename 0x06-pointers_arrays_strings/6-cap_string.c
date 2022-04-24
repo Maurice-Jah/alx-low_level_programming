@@ -1,42 +1,33 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * cap_string - capitalizes all words of a string
- * 
- * @s: pointer to char params
+ * cap_string - capitalize all words in a string.
  *
- * Return: *s
+ * separators: space tab newline ,;.!?
+ *
+ * @a: character string to capitalize
+ *
+ * Return: string
  */
 
-char *cap_string(char *s)
+char *cap_string(char *a)
 {
-	int i = 0;
-        int j = 0;
+	int newword = 1;
+	char *ptr = a;
 
-	char seps[] = {32, 10, 9, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
-
-	int size = sizeof(seps) / sizeof(seps[0]);
-
-	while (s[i] != 0)
+	while (*ptr != 0)
 	{
-		char c = s[i];
-
-		for (j = 0; j < size; j++)
+		if (newword == 1)
 		{
-			if (c == seps[j] && s[i + 1] >= 'a' && s[i + 1] <= 'z')
-			{
-				s[i + 1] = 'A' + (s[i + 1] - 'a');
-				break;
-			}
+			newword = 0;
+			if (*ptr < 'z' && *ptr > 'a')
+				*ptr -= 32;
 		}
-		i++;
+		if (*ptr == ' ' || *ptr == '\t' || *ptr == '\n' || *ptr == ','
+				|| *ptr == ';' || *ptr == '.' || *ptr == '!' || *ptr == '"'
+				|| *ptr == '(' || *ptr == ')' || *ptr == '{' || *ptr == '}')
+			newword = 1;
+		ptr++;
 	}
-
-	if (s[0] >= 'a' && s[0] <= 'z')
-	{
-		s[0] = 'A' + (s[0] - 'a');
-	}
-
-	return (s);
+	return (a);
 }
