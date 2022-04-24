@@ -11,16 +11,29 @@
 
 char *cap_string(char *s)
 {
-	int i,j;
-	char delimeters[] = " \t\n,;.!?\"(){}";
+	int i = 0, j = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
+	char seps[] = {32, 10, 9, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
+
+	int size = sizeof(seps) / sizeof(seps[0]);
+
+	while (s[i] != 0)
 	{
-		if (s[0] >= 97 && s[0] <= 122)
-			s[0] = s[0] - 32;
-		for (j = 0; delimeters[j] != '\0'; j++)
-			if (s[i] == delimeters[j] && s[i + 1] >= 97 && s[i + 1] <= 122)
-				s[i + 1] = s[i + 1] - 32;
+		char c = s[i];
+
+		for (j = 0; j < size; j++)
+		{
+			if (c == seps[j] && s[i + 1] >= 'a' && s[i + 1] <= 'z')
+			{
+				s[i + 1] = 'A' + (s[i + 1] - 'a');
+				break;
+			}
+		}
+		i++;
 	}
+
+	if (s[0] >= 'a' && s[0] <= 'z')
+		s[0] = 'A' + (s[0] - 'a');
+
 	return (s);
 }
