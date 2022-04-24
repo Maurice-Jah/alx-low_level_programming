@@ -1,52 +1,56 @@
-nclude "main.h"
+#include "main.h"
+
+int _putchar(char c);
 
 /**
- * _table - print the time tables
+ * print_times_table - print the times table until n
  *
- * @n: the tested number
+ * @n: n times table
  *
- * Return: the time tables from 0 to n
+ * Return: No return
  */
 
 void print_times_table(int n)
 {
-	int multi, row, col, cents, tens, units;
+	int i;
+	int j;
 
-	for (row = 0; row <= n; row++)
+	if (n >= 0 && n <= 15)
 	{
-		for (col = 0; col <= n; col++)
+		for (i = 0; i <= n; i++)
 		{
-			if (n <= 15 && n >= 0)
+			for (j = 0; j <= n; j++)
 			{
-				multi = row * col;
-				cents = multi / 100;
-				tens = (multi / 10) % 10;
-				units = multi % 10;
-				if (col == 0)
+				if ((i * j) < 10)
 				{
-					_putchar('0');
+					if (j != 0)
+					{
+						_putchar(' ');
+						_putchar(' ');
+						_putchar(' ');
+					}
+					_putchar((j * i) + '0');
 				}
-				else
+				else if ((i * j) < 100)
 				{
-					if (multi > 99)
-						_putchar(cents + '0');
-					else
-						_putchar(' ');
-					if (multi > 9)
-						_putchar(tens + '0');
-					else
-						_putchar(' ');
-					_putchar(units + '0');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar((((j * i) / 10) % 10) + '0');
+					_putchar(((j * i) % 10) + '0');
 				}
-				if (col < n)
+				else if ((i * j) < 1000)
+				{
+					_putchar(' ');
+					_putchar((((j * i) / 100) % 10) + '0');
+					_putchar((((j * i) / 10) % 10) + '0');
+					_putchar(((j * i) % 10) + '0');
+				}
+				if (j != (n))
+				{
 					_putchar(',');
-            				_putchar(' ');
+				}
 			}
-			else
-			{
-				_putchar('\n');
-			}
+			_putchar('\n');
 		}
 	}
 }
-
