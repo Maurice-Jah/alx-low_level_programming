@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/**
+ * main - check code
+ *
+ * Return success
+ */
+
 int main(void)
 {
 	int n;
