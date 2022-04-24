@@ -11,7 +11,8 @@
 
 char *cap_string(char *s)
 {
-	int i = 0, j = 0;
+	int i = 0;
+        int j = 0;
 
 	char seps[] = {32, 10, 9, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
 
