@@ -3,9 +3,7 @@
 /**
  * main - pointer
  *
- * @p :value
- *
- * Return success
+ * Return: void
  */
 
 int main(void)
