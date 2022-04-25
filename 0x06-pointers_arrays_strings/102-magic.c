@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/**
+ * main - pointer
+ *
+ * Return: Always 0
+ */
+
 int main(void)
 {
 	int n;
