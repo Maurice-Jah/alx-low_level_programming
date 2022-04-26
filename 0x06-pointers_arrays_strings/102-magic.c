@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * main - pointer
+ * main - entry point
  *
- * Return: void
+ * Return: 0 if success
  */
 
 int main(void)
