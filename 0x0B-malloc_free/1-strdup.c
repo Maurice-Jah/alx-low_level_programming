@@ -1,33 +1,30 @@
-#include "main.h" 
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * _strdup - Entry point
+ * _strdup- copy a string.
  *
- * @str: string we need to duplicate
+ * @str: string to be copied
  *
- * Return: a pointer to the duplicated string or NULL
+ * Return: pointer to the copied string.
  */
 
 char *_strdup(char *str)
 {
-	char *strnew = NULL;
-	unsigned int i;
-	int n;
+	int strSize, i;
+	char *copyStr;
 
+	strSize = 0;
 	if (str == NULL)
 		return (NULL);
-	for (n = 0; str[n] != '\0'; n++);
-	strnew = (char *)malloc(n + 1 * sizeof(char));
-	if (strnew != NULL)
-	{
-		for (i = 0; str[i] != '\0'; i++)
-			strnew[i] = str[i];
-	} else
-	{
-		return (NULL);
-	}
-	strnew[i] = '\0';
-	return (strnew);
+	while (*(str + strSize))
+		strSize++;
+	strSize++;
+	copyStr = malloc((strSize) * sizeof(char));
+	if (copyStr == NULL)
+		return (0);
+	for (i = 0; i < (strSize); i++)
+		*(copyStr + i) = *(str + i);
+	return (copyStr);
 }
