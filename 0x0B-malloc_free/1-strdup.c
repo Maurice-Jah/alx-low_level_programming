@@ -23,13 +23,11 @@ char *_strdup(char *str)
 	if (strnew != NULL)
 	{
 		for (i = 0; str[i] != '\0'; i++)
-		{
 			strnew[i] = str[i];
-		} else
-		{
-			return (NULL);
-		}
-		strnew[i] = '\0';
-		return (strnew);
+	} else
+	{
+		return (NULL);
 	}
+	strnew[i] = '\0';
+	return (strnew);
 }
