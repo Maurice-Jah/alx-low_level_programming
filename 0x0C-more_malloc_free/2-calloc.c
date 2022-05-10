@@ -3,32 +3,32 @@
 #include <stdlib.h>
 
 /**
- * _calloc- initializes memory spaces with zero
+ * _calloc - concatenate tw strings specially
  *
- * @nmemb: string 1.
+ * @nmemb: number of elements
  *
- * @size: string 2, concatenated to 1
+ * @size: type of elements
  *
- * Return: pointer to the concatenated string.
+ * Return: nothing
  */
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
+	void *p = NULL;
 	unsigned int i;
-	char *newArray;
 
 	if (nmemb == 0 || size == 0)
+	{
 		return (NULL);
-
-	newArray = malloc(nmemb * size);
-	if (newArray == NULL)
+	}
+	p = malloc(nmemb * size);
+	if (p == NULL)
+	{
 		return (NULL);
-
+	}
 	for (i = 0; i < (nmemb * size); i++)
 	{
-		*(newArray + i) = 0;
+		*((char *)(p) + i) = 0;
 	}
-	return (newArray);
+	return (p);
 }
-
-	
